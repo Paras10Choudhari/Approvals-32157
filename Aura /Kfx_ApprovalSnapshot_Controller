@@ -1,0 +1,149 @@
+({
+    init : function(component, event, helper) {
+        component.set('v.columns', [
+            {label: 'Opportunity Name', fieldName: 'oppName', type: 'text'},
+            {label: 'Opportunity CloseDate', fieldName: 'oppClosDate', type: 'text'},
+            {label: 'Opportunity Business Group', fieldName:'oppBuisnessOpportunityGroup', type: 'text'},
+            {label: 'Opportunity PrimaryProductFamily', fieldName: 'OppPrimaryProductFamily', type: 'text'},
+            {label: 'OpportunityStage', fieldName: 'OppStage', type: 'text'},
+            {label: 'Opportunity TransactionChannel', fieldName: 'oppTransactionalChannel', type: 'text'},
+            {label: 'Opportunity DealCatTCV:', fieldName: 'oppDealCatTCV', type: 'text'},
+            
+            
+            {label: 'Account Name', fieldName: 'AccountName', type: 'text'},
+            {label: 'Account Industry', fieldName: 'accIndustry', type: 'text'},
+            {label: 'Account Country', fieldName: 'accCountry', type: 'text'},
+            {label: 'Is Emerging Market?', fieldName: 'Emerging_Market__c', type: 'text' },
+            {label: 'KFX_Bill_to_Account__c', fieldName: 'KFX_Bill_to_Account', type: 'text' },
+            
+            
+            
+            
+            
+            {label: 'Quote name', fieldName: 'quoteName', type: 'text'},
+            {label: 'Is Primary?', fieldName: 'quotePrimary', type: 'text'},  
+            {label: 'Currency', fieldName: 'quoteCurrencyIsoCode', type: 'text'},
+            
+            {label: 'Net Price USD', fieldName: 'KFX_Net_Amount_USD__c', type: 'text'},
+            {label: 'Net Price', fieldName: 'KFX_NetAmount__c', type: 'text'},
+            {label: 'List Price', fieldName: 'KFX_List_Price_Ext__c', type: 'text'},
+            
+            //saas 
+            {label: 'SaaS ProgDisc %', fieldName: 'KFX_SAAS_Total_Program_Discount__c', type: 'text'},
+            {label: 'SaaS ContrDisc %', fieldName: 'kfx_SAAS_Total_Contractual_Discount__c', type: 'text'},
+            {label: 'SaaS Add Disc %', fieldName: 'KFX_Add_Disc_on_SAAS__c', type: 'text'},
+            {label: 'SaaS Total Discount %', fieldName: 'kfx_SAAS_Total_Discount__c', type: 'text'},
+            {label: 'SaaS List Price', fieldName: 'KFX_SAAS_Total_List__c', type: 'text'},
+            {label: 'SaaS Net Price', fieldName: 'KFX_SAAS_Total_Net_Price__c', type: 'text'},
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            {label: 'Opportunity Owner Name', fieldName: 'OwnerName', type: 'text' },
+            {label: 'Opportunity OwnerRegion', fieldName: 'OwnerRegion', type: 'text' },
+            {label: 'Opportunity SubRegion', fieldName: 'OwnerSubregion', type: 'text' },
+            {label: 'Opportunity OwnerRole', fieldName: 'OwnerRole', type: 'text' },
+            {label: 'Opportunity OwnerCountry', fieldName: 'OwnerCountry', type: 'text' },
+            {label: 'Opportunity OwnerManagerId', fieldName: 'OwnerManagerId', type: 'text' },
+        ]);
+            var action = component.get("c.getRecords");
+            action.setParams(
+            { recordId: component.get("v.recordId")
+            }
+            );
+            
+            // Call back method
+            action.setCallback(this, function(response) {
+            
+            var responseValue = response.getReturnValue(); 
+            if(responseValue==null){return;}
+            console.log(responseValue);
+            responseValue.forEach(res => {
+            console.log('Bhavesh', res);	
+            
+            console.log('Bhavesh', res);
+            res.quoteName=res.Quote__r.Name;
+            res.quotePrimary=res.Quote__r.SBQQ__Primary__c;
+            
+            res.quoteCurrencyIsoCode=res.Quote__r.CurrencyIsoCode;
+            res.KFX_Net_Amount_USD__c=res.Quote__r.KFX_Net_Amount_USD__c;
+            res.KFX_NetAmount__c=res.Quote__r.KFX_NetAmount__c;
+            res.KFX_List_Price_Ext__c=res.Quote__r.KFX_List_Price_Ext__c;
+            res.KFX_SAAS_Total_Program_Discount__c=res.Quote__r.KFX_SAAS_Total_Program_Discount__c;
+            res.kfx_SAAS_Total_Contractual_Discount__c=res.Quote__r.kfx_SAAS_Total_Contractual_Discount__c;
+            res.KFX_Add_Disc_on_SAAS__c=res.Quote__r.KFX_Add_Disc_on_SAAS__c;
+            res.kfx_SAAS_Total_Discount__c=res.Quote__r.kfx_SAAS_Total_Discount__c;
+            res.KFX_SAAS_Total_List__c=res.Quote__r.KFX_SAAS_Total_List__c;
+            res.KFX_SAAS_Total_Net_Price__c=res.Quote__r.KFX_SAAS_Total_Net_Price__c;
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            res.Emerging_Market__c=res.Quote__r.KFX_Bill_to_Account__r.Emerging_Market__c;
+            res.KFX_Bill_to_Account =res.Quote__r.KFX_Bill_to_Account__r.Name;
+            res.OwnerName =res.Quote__r.SBQQ__Opportunity2__r.Owner.Name;
+            res.OwnerRegion =res.Quote__r.SBQQ__Opportunity2__r.Owner.Region__c;
+            res.OwnerSubregion=res.Quote__r.SBQQ__Opportunity2__r.Owner.Sub_Region__c;
+            res.OwnerRole =res.Quote__r.SBQQ__Opportunity2__r.Owner.Sales_Role__c;
+            res.OwnerCountry= res.Quote__r.SBQQ__Opportunity2__r.Owner.Country;
+            res.OwnerManagerId= res.Quote__r.SBQQ__Opportunity2__r.Owner.ManagerId;
+            
+            res.oppName=res.Quote__r.SBQQ__Opportunity2__r.Name;
+            res.oppClosDate=res.Quote__r.SBQQ__Opportunity2__r.CloseDate;
+            res.oppBuisnessOpportunityGroup=res.Quote__r.SBQQ__Opportunity2__r.Business_Group__c;
+            res.OppPrimaryProductFamily=res.Quote__r.SBQQ__Opportunity2__r.KFX_Lead_Product_Family__c;
+            res.OppStage=res.Quote__r.SBQQ__Opportunity2__r.StageName;
+            res.oppTransactionalChannel=res.Quote__r.SBQQ__Opportunity2__r.Transaction_Channel__c;
+            res.oppDealCatTCV=res.Quote__r.SBQQ__Opportunity2__r.Deal_Category_TCV__c;
+            
+            
+            res.AccountName= res.Quote__r.SBQQ__Account__r.Name;
+            res.accIndustry= res.Quote__r.SBQQ__Account__r.Industry;
+            res.accCountry=res.Quote__r.SBQQ__Account__r.ShippingCountry;
+            
+            
+            
+            /* 
+            if(res.KFX_Bill_to_Account__r.Emerging_Market__c){
+            res.KFX_Bill_to_Account__r.Emerging_Market__c= "true";
+            console.log('true is set');
+            console.log('Check Value',res.KFX_Bill_to_Account__r.Emerging_Market__c);
+            }
+            else{
+            res.KFX_Bill_to_Account__r.Emerging_Market__c ='false';
+            }*/
+            }) 
+            component.set("v.data",responseValue);
+            console.log('Testinz',responseValue);
+            
+            });
+            
+            // Enqueue Action
+            $A.enqueueAction(action);
+            }
+            })
