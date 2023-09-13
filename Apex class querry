@@ -1,0 +1,34 @@
+public class KFX_ApprovalSnapshot {
+    @AuraEnabled
+    public static List<sbaa__Approval__c> getRecords(id  recordId){
+        return [Select id,name,sbaa__Rule__c, sbaa__AssignedTo__c, CreatedById, CreatedDate, LastModifiedDate, sbaa__Status__c,
+                Quote__r.KFX_DiscountJustification__c, 
+                Quote__r.KFX_Approval_Justification__c, 
+                Quote__r.KFX_Additional_Discount_Override__c,Quote__r.KFX_AdditionalDiscountOverrideUser__c, 
+                sbaa__CommentsLong__c,Quote__r.Name,Quote__r.SBQQ__Primary__c, Quote__r.CurrencyIsoCode, 
+                Quote__r.KFX_List_Price_Ext__c, Quote__r.KFX_NetAmount__c,
+                Quote__r.KFX_Net_Amount_USD__c,Quote__r.KFX_SAAS_Total_Program_Discount__c,
+                Quote__r.KFX_Add_Disc_on_SAAS__c,  Quote__r.kfx_SAAS_Total_Contractual_Discount__c,
+                Quote__r.KFX_SAAS_Total_List__c ,Quote__r.KFX_SAAS_Total_Net_Price__c,Quote__r.KFX_TOP_Total_Program_Discount__c, 
+                Quote__r.KFX_Add_Disc_on_TOP__c,Quote__r.kfx_TOP_Total_Discount__c,Quote__r.KFX_TOP_Total_List__c,
+                Quote__r.KFX_TOP_Total_Net_Price__c,Quote__r.kfx_Product_Total_Discount__c,
+                Quote__r.KFX_Product_Total_List__c,Quote__r.KFX_Product_Total_Net_Price__c,Quote__r.kfx_Support_Total_Discount__c,
+                Quote__r.KFX_Support_Attach_Rate__c,Quote__r.KFX_Support_Total_List__c,
+                Quote__r.KFX_Support_Total_Net_Price__c,Quote__r.KFX_PS_Component_Term_Total_Program__c,Quote__r.kfx_PS_Component_Term_Contractual_Disc__c,
+                Quote__r.KFX_Add_Disc_on_PS_Components_ToP__c, Quote__r.kfx_PS_Components_Term_Total_Discount__c, 
+                Quote__r.KFX_PS_Component_Term_Total_List__c,Quote__r.KFX_PS_Component_Term_Total_Net_Price__c,
+                Quote__r.KFX_Training_Total_Program__c, Quote__r.KFX_Training_Total_Contractual_Discount__c,
+                Quote__r.KFX_Training_Total_Additional_Discount__c,Quote__r.kfx_Training_Total_Discount__c,
+                Quote__r.KFX_Training_Total_List__c,Quote__r.KFX_Training_Total_Net_Price__c,Quote__r.KFX_PS_Total_Program_Discount__c,
+                Quote__r.kfx_PS_Total_Contractual_Discount__c,Quote__r.kfx_PS_Total_Discount__c,Quote__r.kfx_PS_Total_List__c, 
+                Quote__r.Kfx_PS_Total_Net_Price__c, Quote__r.KFX_Credit_and_Rebill__c,Quote__r.KFX_Billing_Period_12M__c,
+                Quote__r.KFX_Return_with_offsetting_Offer__c,Quote__r.KFX_Sale_of_product_on_Legacy_Price_List__c,
+                Quote__r.X8_Sale_of_Legacy_Support_beyond_EOS_da__c,Quote__r.KFX_Non_Standard_Re_configurations_of_SW__c,
+                Quote__r.KFX_Alternate_licensing_model__c,Quote__r.KFX_Reconfig_and_Activation_Fees__c,
+                Quote__r.KFX_Eval_Licenses__c,Quote__r.IsDeleted, Quote__r.KFX_Migration_Licenses__c , Quote__r.KFX_Customer_Novation__c,
+                Quote__r.KFX_Professional_Services_Returns_Credit__c,Quote__r.KFX_Education_Services__c,Quote__r.KFX_New_Support_Contract_12_months__c,Quote__r.KFX_24by7_SLO_Approval__c,Quote__r.KFX_Change_of_Renewal_Price_Method__c,Quote__r.KFX_Non_Standard_Support_Deliverables__c,Quote__r.KFX_Add_on_orders_into_lapsed_contracts__c,Quote__r.KFX_Renewals_Credit_memo__c,Quote__r.KFX_Waive_reinstatement_fee__c,Quote__r.KFX_Sub_Extension__c,Quote__r.KFX_Annual_Support_Renewal_Increases__c,Quote__r.KFX_Other_Scenarios__c,Quote__r.KFX_Future_Pricing__c,Quote__r.KFX_Referral_Co_Sell__c,Quote__r.SBQQ__Opportunity2__r.kfx_OpportunityID__c,Quote__r.SBQQ__Opportunity2__r.Name, Quote__r.SBQQ__Opportunity2__r.CloseDate, Quote__r.SBQQ__Opportunity2__r.Business_Group__c,Quote__r.SBQQ__Opportunity2__r.KFX_Lead_Product_Family__c,Quote__r.SBQQ__Opportunity2__r.StageName, Quote__r.SBQQ__Opportunity2__r.Transaction_Channel__c, Quote__r.SBQQ__Opportunity2__r.Deal_Category_TCV__c,Quote__r.SBQQ__Account__r.Name, Quote__r.SBQQ__Account__r.Industry,Quote__r.KFX_Bill_to_Account__r.Emerging_Market__c,Quote__r.KFX_Bill_to_Account__r.Name, Quote__r.SBQQ__Account__r.ShippingCountry,Quote__r.SBQQ__Opportunity2__r.owner.Name,Quote__r.SBQQ__Opportunity2__r.owner.Region__c, Quote__r.SBQQ__Opportunity2__r.owner.Sub_Region__c,Quote__r.SBQQ__Opportunity2__r.owner.Sales_Role__c, Quote__r.SBQQ__Opportunity2__r.owner.Country, Quote__r.SBQQ__Opportunity2__r.owner.ManagerId
+
+               from sbaa__Approval__c where quote__c != null and id =: recordId];
+    }
+    
+}
